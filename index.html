@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>custom video player</title>
+    <script src="player.js"></script>
+    <link rel="stylesheet" href="/player.css" />
+    <link rel="stylesheet" href="/slider.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    .player {
+      border-radius: 10px;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 2rem;
+    }
+  </style>
+  <body style="background-color: black">
+    <div class="player" style="border: 1px solid #cccccca2"></div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    const video = document.querySelector(".player");
+    let options = {
+      loop: false,
+      muted: false,
+      preload: "metadata",
+      src: "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8",
+      width: "640px",
+      height: "360px",
+      poster: "https://source.unsplash.com/random/640x360",
+    };
+    let meta = {
+      name: "Big Buck Bunny",
+      description:
+        "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.",
+      channel: "Blender Foundation",
+
+      duration: 596,
+    };
+    const player = new Player(video, (options = options), (meta = meta));
+    player.init();
+  </script>
+</html>
